@@ -16,6 +16,19 @@ export FLASK_ENV=development
 flask run
 ```
 
+```sh
+$ sudo bash launches.sh
+ * Serving Flask app "launches.py" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: XXX-XXX-XXX
+```
+
+Then load this URL in a common Web browser --> `http://127.0.0.1:5000/`
+
 ## launches.py
 
 `launches.py` is a Flask app which imports `Flask`, `render_template`, `json` and `requests` modules.
