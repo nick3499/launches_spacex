@@ -1,5 +1,5 @@
 # launches_spacex
-Flask: Request SpaceX Launches Data
+Flask: Request SpaceX Data for Launches
 
 ## launches.sh
 
