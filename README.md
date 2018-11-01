@@ -5,7 +5,8 @@ Flask: Request SpaceX Data for Launches
 
 ## launches.sh
 
-`$ sudo bash launches.sh` sets a couple of Flask environmental variables then launches the Web app. Note: `development` mode is not for production.
+ - `$ sudo bash launches.sh` sets a couple of Flask environment variables then launches the Web app
+ - `export FLASK_ENV=development` sets [debug mode](http://flask.pocoo.org/docs/1.0/config/#environment-and-debug-features)
 
 ```sh
 #!/bin/bash
@@ -17,7 +18,13 @@ flask run
 
 ## launches.py
 
-`launches.py` is a Flask app which imports `Flask`, `render_template`, `json` and `requests` modules. `app = Flask(__name__) ` assigns the Flask instance. `@app.route('/')` is a decorator which modifies the `index()` function. `requests.get("https://api.spacexdata.com/v3/launches")` gets a JSON blob from the SpaceX API. `json.loads(res.text)` assigns the blob to a local variable. `render_template("launches.html", data=data)` renders the `launches.html` template.
+`launches.py` is a Flask app which imports `Flask`, `render_template`, `json` and `requests` modules.
+
+ - `app = Flask(__name__) ` creates a Flask instance
+ - `@app.route('/')` is a decorator which modifies the `index()` function  
+ - `requests.get("https://api.spacexdata.com/v3/launches")` requests a JSON blob from the SpaceX API
+ - `json.loads(res.text)` assigns the blob to a local variable
+ - `render_template("launches.html", data=data)` renders the `launches.html` template which uses a [Jinja2 for loop](http://jinja.pocoo.org/docs/2.10/templates/#for) to iterate through a list of launches
 
 ```py
 if __name__ == '__main__':
@@ -45,7 +52,10 @@ if __name__ == '__main__':
 
 ## launches.html
 
-`launches.html` is a template which includes Jinja2 template syntax, e.g. `{{ i.mission_name }}`.
+`launches.html` is a template which features Jinja2 template engine syntax, e.g. `{{ i.mission_name }}`.
+
+ - `{% for i in data %} ... {% endfor %}` iterates the template through a list of launches
+ - `{{ i.flight_number }}` demos Jinja2 handlebars or mustache syntax which is used to pass values from the SpaceX API to the template
 
 ```html
 <!DOCTYPE html>
