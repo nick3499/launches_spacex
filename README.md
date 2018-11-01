@@ -1,6 +1,8 @@
 # launches_spacex
 Flask: Request SpaceX Data for Launches
 
+![capture]
+
 ## launches.sh
 
 `$ sudo bash launches.sh` sets a couple of Flask environmental variables then launches the Web app. Note: `development` mode is not for production.
@@ -102,3 +104,5 @@ if __name__ == '__main__':
 </body>
 </html>
 ```
+
+[capture]: https://github.com/nick3499/launches_spacex/blob/master/spacex-launches.png
