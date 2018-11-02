@@ -128,4 +128,4 @@ if __name__ == '__main__':
 </html>
 ```
 
-[capture]: ![screen capture]({{site.baseurl}}/https://raw.githubusercontent.com/nick3499/launches_spacex/master/spacex-launches.png)
+[capture]: ![screen capture]({{site.baseurl}}/https://github.com/nick3499/launches_spacex/blob/master/spacex-launches.png)
