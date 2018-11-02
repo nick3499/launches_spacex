@@ -5,7 +5,7 @@ Flask: Request SpaceX Data: Launches (Unofficial Repo)
 
 ## launches.sh
 
- - `$ sudo bash launches.sh` sets a couple of Flask environment variables then launches the Web app
+ - `$ sudo bash launches.sh` sets a couple of Flask environment variables then launches the Flask app
  - `export FLASK_ENV=development` sets [debug mode](http://flask.pocoo.org/docs/1.0/config/#environment-and-debug-features)
 
 ```sh
