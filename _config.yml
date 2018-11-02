@@ -1,4 +1,0 @@
-theme: jekyll-theme-hacker
-title: launches_spacex (unofficial)
-description: using Python Flask to get SpaceX API launch data
-baseurl: /launches_spacex
