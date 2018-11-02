@@ -1,7 +1,7 @@
 # launches_spacex
 Flask: Request SpaceX Data: Launches (Unofficial Repo)
 
-![capture]({{site.baseurl}}/https://github.com/nick3499/launches_spacex/blob/master/spacex-launches.png)
+![capture]
 
 ## launches.sh
 
@@ -128,4 +128,4 @@ if __name__ == '__main__':
 </html>
 ```
 
-[capture]: []({{site.baseurl}}/https://github.com/nick3499/launches_spacex/blob/master/spacex-launches.png)
+[capture]: {{site.baseurl}}/https://github.com/nick3499/launches_spacex/blob/master/spacex-launches.png
