@@ -1,6 +1,5 @@
 import json
 import requests
-from datetime import datetime
 from flask import Flask, render_template
 
 app = Flask(__name__)
