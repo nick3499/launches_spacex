@@ -1,7 +1,7 @@
 # launches_spacex
 Flask: Request SpaceX Data: Launches (Unofficial Repo)
 
-<img src="{{ site.baseurl }}/blob/master/spacex-launches.png">
+![capture]
 
 ## launches.sh
 
