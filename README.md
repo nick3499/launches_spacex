@@ -33,7 +33,7 @@ Then load this URL in a common Web browser --> `http://127.0.0.1:5000/`
 
 `launches.py` is a Flask app which imports `Flask`, `render_template`, `json` and `requests` modules.
 
- - `app = Flask(__name__) ` creates a Flask instance
+ - `app = Flask(__name__) ` instantiates Flask
  - `@app.route('/')` is a decorator which modifies the `index()` function  
  - `requests.get("https://api.spacexdata.com/v3/launches")` requests a JSON blob from the SpaceX API
  - `json.loads(res.text)` assigns the blob to a local variable
