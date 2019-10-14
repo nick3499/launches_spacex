@@ -38,7 +38,7 @@ Then load this URL in a common Web browser --> `http://127.0.0.1:5000/`
 
 ```py
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
 ```
 
 The block above has to do with running this app as a standalone module, in dev mode.
@@ -57,7 +57,7 @@ def index():
     return render_template("launches.html", data=data)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
 ```
 
 ## launches.html
