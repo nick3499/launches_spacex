@@ -3,18 +3,16 @@ Flask: Request SpaceX Data: Launches (Unofficial Repo)
 
 ![capture]
 
-## launches.flaskenv
+## Start the App
 
-```sh
-export FLASK_ENV=development
-export FLASK_APP=launches
-```
+In a Unix-like terminal emulator enter the following:
 
- - In a Unix-like terminal emulator, enter `$ flask run`.
- - `export FLASK_APP=launches` sets the `FLASK_APP` environmental variable value to `launches`. This app then launches with the `flask run` command string.
- - `export FLASK_ENV=development` sets [debug mode](http://flask.pocoo.org/docs/1.0/config/#DEBUG). Setting `development` mode in `launches.py` could lead to unexpected behavior.
+`$ export FLASK_APP=launches; FLASK_ENV=development; flask run`
 
-When the app launches, you should see something like the following:
+ - `FLASK_APP=launches` sets the `FLASK_APP` environmental variable value to `launches`. This app then launches with the `flask run` command string.
+ - `FLASK_ENV=development` sets [debug mode](http://flask.pocoo.org/docs/1.0/config/#DEBUG). Setting `development` mode in `launches.py` could lead to unexpected behavior.
+
+When the app launches, something like the following should print to terminal:
 
 ```sh
  * Serving Flask app "launches.py" (lazy loading)
@@ -128,3 +126,15 @@ if __name__ == '__main__':
 ```
 
 [capture]: https://github.com/nick3499/launches_spacex/blob/master/spacex-launches.png
+
+## Alternative Start Up
+
+A startup shell script is recommended over a `.flaskenv` file. Unexpected results were experienced with a `.flaskenv` file. A shell script could contain the following:
+
+```sh
+export FLASK_APP=launches
+export FLASK_ENV=development
+flask run
+```
+
+`$ bash launches.sh`
