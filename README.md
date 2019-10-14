@@ -3,19 +3,21 @@ Flask: Request SpaceX Data: Launches (Unofficial Repo)
 
 ![capture]
 
-## launches.flaskenv
+## launches.sh
 
 ```sh
 export FLASK_APP=launches
 export FLASK_ENV=development
+flask run
 ```
 
- - In a Unix-like terminal emulator, enter `$ flask run`.
+ - In a Unix-like terminal emulator, enter `$ sudo bash launches.sh`.
  - `export FLASK_APP=launches` sets the `FLASK_APP` environmental variable value to `launches`. This app then launches with the `flask run` command string.
  - `export FLASK_ENV=development` sets [debug mode](http://flask.pocoo.org/docs/1.0/config/#DEBUG). Setting `development` mode in `launches.py` could lead to unexpected behavior.
 
+When the app launches, you should see something like the following:
+
 ```sh
-$ sudo bash launches.sh
  * Serving Flask app "launches.py" (lazy loading)
  * Environment: development
  * Debug mode: on
