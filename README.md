@@ -3,19 +3,16 @@ Flask: Request SpaceX Data: Launches (Unofficial Repo)
 
 ![capture]
 
-## launches.sh
-
- - In a Unix-like terminal emulator, run `$ sudo bash launches.sh`.
- - `export FLASK_APP=launches.py` sets the `FLASK_APP` environment variable to `launches.py`. This app then launches with the `flask run` command string.
- - `export FLASK_ENV=development` sets [debug mode](http://flask.pocoo.org/docs/1.0/config/#DEBUG). Setting `development` mode in `launches.py` could lead to unexpected behavior.
+## launches.flaskenv
 
 ```sh
-#!/bin/bash
-
-export FLASK_APP=launches.py
+export FLASK_APP=launches
 export FLASK_ENV=development
-flask run
 ```
+
+ - In a Unix-like terminal emulator, enter `$ flask run`.
+ - `export FLASK_APP=launches` sets the `FLASK_APP` environmental variable value to `launches`. This app then launches with the `flask run` command string.
+ - `export FLASK_ENV=development` sets [debug mode](http://flask.pocoo.org/docs/1.0/config/#DEBUG). Setting `development` mode in `launches.py` could lead to unexpected behavior.
 
 ```sh
 $ sudo bash launches.sh
@@ -34,8 +31,8 @@ Then load this URL in a common Web browser --> `http://127.0.0.1:5000/`
 
 `launches.py` is a Flask app which imports `Flask`, `render_template`, `json` and `requests` modules.
 
- - `app = Flask(__name__) ` instantiates Flask
- - `@app.route('/')` is a decorator which modifies the `index()` function. Whenever a user loads the root URL `/`, the `index()` function is executed.
+ - `app = Flask(__name__)` instantiates Flask class
+ - `@app.route('/')` is a decorator which modifies the `index()` function, and declares a route. Whenever a user loads the root URL `/`, the `index()` function is executed.
  - `requests.get("https://api.spacexdata.com/v3/launches")` requests a JSON blob from the SpaceX API
  - `data = json.loads(res.text)` assigns the blob to a local variable
  - `render_template("launches.html", data=data)` renders the `launches.html` template which uses a [Jinja2 for loop](http://jinja.pocoo.org/docs/2.10/templates/#for) to iterate through a list of launches
