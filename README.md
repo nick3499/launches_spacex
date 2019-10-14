@@ -132,6 +132,8 @@ if __name__ == '__main__':
 A startup shell script is recommended over a `.flaskenv` file. Unexpected results were experienced with a `.flaskenv` file. A shell script could contain the following:
 
 ```sh
+#!/bin/bash
+
 export FLASK_APP=launches
 export FLASK_ENV=development
 flask run
