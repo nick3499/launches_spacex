@@ -41,7 +41,7 @@ if __name__ == '__main__':
     app.run()
 ```
 
-The block above has to do with running this app as a standalone module, in dev mode.
+The block above has to do with running this app as a standalone module.
 
 ```py
 import json
