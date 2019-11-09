@@ -11,4 +11,4 @@ def index():
     return render_template("launches.html", data=data)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
