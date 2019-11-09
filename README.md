@@ -9,8 +9,9 @@ In a Unix-like terminal emulator enter the following:
 
 `$ export FLASK_APP=launches; export FLASK_ENV=development; flask run`
 
- - `FLASK_APP=launches` sets the `FLASK_APP` environmental variable value to `launches`. This app then launches with the `flask run` command string.
- - `FLASK_ENV=development` sets [debug mode](http://flask.pocoo.org/docs/1.0/config/#DEBUG). Setting `development` mode in `launches.py` could lead to unexpected behavior.
+ - `FLASK_APP=launches` tells Flask to execute `launches.py` when `flask run` is entered at the command line.
+ - `FLASK_ENV=development` sets Flask environment to [debug mode](http://flask.pocoo.org/docs/1.0/config/#DEBUG).
+ - `flask run` starts the app.
 
 When the app launches, something like the following should print to terminal:
 
