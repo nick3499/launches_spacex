@@ -16,11 +16,10 @@
   <hr>
   {% for i in data %}
   <div>
-    <h3>Mission</h3>
+    <h3>{{ i.mission_name }}</h3>
     <table>
       <tr><td>Mission patch:</td><td><img src="{{ i.links.mission_patch_small }}"></td></tr>
       <tr><td>Flight number:</td><td>{{ i.flight_number }} ({{ i.launch_date_local[0:10] }})</td></tr>
-      <tr><td>Name:</td><td>{{ i.mission_name }}</td></tr>
     </table>
     <h3>Rocket</h3>
     <table>
