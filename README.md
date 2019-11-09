@@ -125,8 +125,6 @@ if __name__ == '__main__':
 </html>
 ```
 
-[capture]: https://github.com/nick3499/launches_spacex/blob/master/spacex-launches.png
-
 ## Alternative Start Up
 
 A startup shell script is recommended over a `.flaskenv` file. Unexpected results were experienced with a `.flaskenv` file. A shell script could contain the following:
@@ -138,3 +136,5 @@ flask run
 ```
 
 `$ bash launches.sh`
+
+[capture]: https://github.com/nick3499/launches_spacex/blob/master/screen_capture.png
