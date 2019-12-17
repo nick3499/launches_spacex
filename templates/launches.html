@@ -20,6 +20,8 @@
     <table>
       <tr><td>Mission patch:</td><td><img src="{{ i.links.mission_patch_small }}"></td></tr>
       <tr><td>Flight number:</td><td>{{ i.flight_number }} ({{ i.launch_date_local[0:10] }})</td></tr>
+      <tr><td>Details:</td><td>{{ i.details }}</td></tr>
+      <tr><td>Launch site:</td><td>{{ i.launch_site.site_name_long }}</td></tr>
     </table>
     <h3>Rocket</h3>
     <table>
@@ -41,13 +43,13 @@
       <tr><td>Regime:</td><td>{{ i.rocket.second_stage.payloads.0.orbit_params.regime }}</td></tr>
     </table>
     <h3>Links</h3>
-    <ul>
-      <li><a href="{{ i.links.article_link }}">Article</a></li>
-      <li><a href="{{ i.links.wikipedia }}">Wikipedia</a></li>
-      <li><a href="{{ i.links.video_link }}">Video</a></li>
-    </ul>
-    <h3>Details</h3>
-    <tr><td>Details:</td><td>{{ i.details }}</td></tr>
+    <table>
+      <tr><td><a href="{{ i.links.video_link }}" target="_blank">Video</a></td></tr>
+      <tr><td><a href="{{ i.links.flickr_images[0] }}" target="_blank">Image</a></td></tr>
+      <tr><td><a href="{{ i.links.presskit }}" target="_blank">Presskit [PDF]</a></td></tr>
+      <tr><td><a href="{{ i.links.article_link }}" target="_blank">Article</a></td></tr>
+      <tr><td><a href="{{ i.links.wikipedia }}" target="_blank">Wikipedia</a></td></tr>
+    </table>
   </div>
   {% endfor %}
 </body>
