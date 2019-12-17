@@ -56,10 +56,8 @@ app.config.from_envvar('LAUNCHES_DEV_ENV')
 
 @app.route('/')
 def index():
-    # res = requests.get("https://api.spacexdata.com/v3/launches")
-    # data = json.loads(res.text)
-    with open("launches.json", "r") as json_file:
-        data = json.load(json_file)
+    res = requests.get("https://api.spacexdata.com/v3/launches")
+    data = json.loads(res.text)
     return render_template("launches.html", data=data)
 
 if __name__ == '__main__':
