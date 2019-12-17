@@ -1,35 +1,28 @@
 # launches_spacex
-Flask: Request SpaceX Data: Launches (Unofficial Repo)
+[Flask](https://pypi.org/project/Flask/): Request SpaceX Launches Data (Unofficial Repo)
 
 ![capture]
 
-## Start the App
+## launches.sh
 
-In a Unix-like terminal emulator enter the following:
+```bash
+export LAUNCHES_DEV_ENV=launches.cfg
+python3 launches.py
+```
+`LAUNCHES_DEV_ENV` sets path to this app's env config file.
 
-`$ export FLASK_APP=launches; export FLASK_ENV=development; flask run`
+## launches.cfg
 
- - `FLASK_APP=launches` tells Flask to execute `launches.py` when `flask run` is entered at the command line.
- - `FLASK_ENV=development` sets Flask environment to [debug mode](http://flask.pocoo.org/docs/1.0/config/#DEBUG).
- - `flask run` starts the app.
-
-When the app launches, something like the following should print to terminal:
-
-```sh
- * Serving Flask app "launches.py" (lazy loading)
- * Environment: development
- * Debug mode: on
- * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
- * Restarting with stat
- * Debugger is active!
- * Debugger PIN: XXX-XXX-XXX
+```bash
+export LAUNCHES_DEV_ENV=launches.cfg
+python3 launches.py
 ```
 
-Then load this URL in a common Web browser --> `http://127.0.0.1:5000/`
+Then load `http://127.0.0.1:5000/` in a web browser.
 
 ## launches.py
 
-`launches.py` is a Flask app which imports `Flask`, `render_template`, `json` and `requests` modules.
+`launches.py` is a Flask app which imports `flask.Flask`, `flask.render_template`, `json` and `requests` modules.
 
  - `app = Flask(__name__)` instantiates Flask class
  - `@app.route('/')` is a decorator which modifies the `index()` function, and declares a route. Whenever a user loads the root URL `/`, the `index()` function is executed.
@@ -87,16 +80,17 @@ if __name__ == '__main__':
   <hr>
   {% for i in data %}
   <div>
-    <h3>Mission</h3>
+    <h3>{{ i.mission_name }}</h3>
     <table>
       <tr><td>Mission patch:</td><td><img src="{{ i.links.mission_patch_small }}"></td></tr>
       <tr><td>Flight number:</td><td>{{ i.flight_number }} ({{ i.launch_date_local[0:10] }})</td></tr>
-      <tr><td>Name:</td><td>{{ i.mission_name }}</td></tr>
+      <tr><td>Details:</td><td>{{ i.details }}</td></tr>
+      <tr><td>Launch site:</td><td>{{ i.launch_site.site_name_long }}</td></tr>
     </table>
     <h3>Rocket</h3>
     <table>
-      <tr><td>Name:</td><td>{{ i.flight_number }}</td></tr>
-      <tr><td>Type:</td><td>{{ i.mission_name }}</td></tr>
+      <tr><td>Name:</td><td>{{ i.rocket.rocket_name }}</td></tr>
+      <tr><td>Type:</td><td>{{ i.rocket.rocket_type }}</td></tr>
     </table>
     <h3>Payload</h3>
     <table>
@@ -113,13 +107,13 @@ if __name__ == '__main__':
       <tr><td>Regime:</td><td>{{ i.rocket.second_stage.payloads.0.orbit_params.regime }}</td></tr>
     </table>
     <h3>Links</h3>
-    <ul>
-      <li><a href="{{ i.links.article_link }}">Article</a></li>
-      <li><a href="{{ i.links.wikipedia }}">Wikipedia</a></li>
-      <li><a href="{{ i.links.video_link }}">Video</a></li>
-    </ul>
-    <h3>Details</h3>
-    <tr><td>Details:</td><td>{{ i.details }}</td></tr>
+    <table>
+      <tr><td><a href="{{ i.links.video_link }}" target="_blank">Video</a></td></tr>
+      <tr><td><a href="{{ i.links.flickr_images[0] }}" target="_blank">Image</a></td></tr>
+      <tr><td><a href="{{ i.links.presskit }}" target="_blank">Presskit [PDF]</a></td></tr>
+      <tr><td><a href="{{ i.links.article_link }}" target="_blank">Article</a></td></tr>
+      <tr><td><a href="{{ i.links.wikipedia }}" target="_blank">Wikipedia</a></td></tr>
+    </table>
   </div>
   {% endfor %}
 </body>
