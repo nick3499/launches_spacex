@@ -14,8 +14,7 @@ python3 launches.py
 ## launches.cfg
 
 ```bash
-export LAUNCHES_DEV_ENV=launches.cfg
-python3 launches.py
+DEBUG = True
 ```
 
 Then load `http://127.0.0.1:5000/` in a web browser.
