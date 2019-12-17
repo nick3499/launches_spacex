@@ -17,15 +17,25 @@ python3 launches.py
 DEBUG = True
 ```
 
+Flask will indicate which address to load in a web browser. Notice that the debugger was activated based on the instruction in the `.cfg` file.
+
+```bash
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: XXX-XXX-XXX
+```
+
 Then load `http://127.0.0.1:5000/` in a web browser.
 
 ## launches.py
 
-`launches.py` is a Flask app which imports `flask.Flask`, `flask.render_template`, `json` and `requests` modules.
+`launches.py` is a Flask app which imports `flask.Flask()`, `flask.render_template()`, `json.loads()` and `requests.get()` modules.
 
  - `app = Flask(__name__)` instantiates Flask class
+ - `app.config.from_envvar('LAUNCHES_DEV_ENV')` sets a specific environmental variable for configuration.
  - `@app.route('/')` is a decorator which modifies the `index()` function, and declares a route. Whenever a user loads the root URL `/`, the `index()` function is executed.
- - `requests.get("https://api.spacexdata.com/v3/launches")` requests a JSON blob from the SpaceX API
+ - `requests.get("https://api.spacexdata.com/v3/launches")` requests a JSON blob from the SpaceX API.
  - `data = json.loads(res.text)` assigns the blob to a local variable
  - `render_template("launches.html", data=data)` renders the `launches.html` template which uses a [Jinja2 for loop](http://jinja.pocoo.org/docs/2.10/templates/#for) to iterate through a list of launches
 
@@ -34,19 +44,22 @@ if __name__ == '__main__':
     app.run()
 ```
 
-The block above has to do with running this app as a standalone module.
+The block above has to do with running the app as a standalone module. If this script was imported into another Python app, its `__name__` value would be `launches` instead of `__main__`.
 
-```py
+```python
 import json
-import requests
+from requests import get
 from flask import Flask, render_template
 
 app = Flask(__name__)
+app.config.from_envvar('LAUNCHES_DEV_ENV')
 
 @app.route('/')
 def index():
-    res = requests.get("https://api.spacexdata.com/v3/launches")
-    data = json.loads(res.text)
+    # res = requests.get("https://api.spacexdata.com/v3/launches")
+    # data = json.loads(res.text)
+    with open("launches.json", "r") as json_file:
+        data = json.load(json_file)
     return render_template("launches.html", data=data)
 
 if __name__ == '__main__':
@@ -58,7 +71,7 @@ if __name__ == '__main__':
 `launches.html` is a template which features Jinja2 template engine syntax, e.g. `{{ i.mission_name }}`.
 
  - `{% for i in data %} ... {% endfor %}` iterates the template through a list of launches
- - `{{ i.flight_number }}` demos Jinja2 handlebars or mustache syntax which is used to pass values from the SpaceX API to the template
+ - `{{ i.flight_number }}` demos Jinja2 handlebars (or mustache syntax) used to pass values from the SpaceX API to the template.
 
 ```html
 <!DOCTYPE html>
@@ -119,16 +132,17 @@ if __name__ == '__main__':
 </html>
 ```
 
-## Alternative Start Up
+## Alternate Start-up
 
-A startup shell script is recommended over a `.flaskenv` file. Unexpected results were experienced with a `.flaskenv` file. A shell script could contain the following:
+The following shell script will force debugger activation, and, if a template is modified, it will reload:
 
-```sh
-export FLASK_APP=launches
-export FLASK_ENV=development
+### launches.sh
+
+```bash
+export FLASK_APP=launches.py
+export FLASK_DEBUG=1
+export TEMPLATES_AUTO_RELOAD=1
 flask run
 ```
-
-`$ bash launches.sh`
 
 [capture]: https://github.com/nick3499/launches_spacex/blob/master/screen_capture.png
