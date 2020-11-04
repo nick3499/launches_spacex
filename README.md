@@ -165,3 +165,5 @@ flask run
 ```
 
 [capture]: https://github.com/nick3499/launches_spacex/blob/master/screen_capture.png
+
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R72LISM)
